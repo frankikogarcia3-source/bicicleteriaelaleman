@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bicicletería El Alemán | Bicis Stunt, BMX y Repuestos</title>
+  <meta name="description" content="Bicicletería El Alemán: bicis stunt, BMX, componentes, cubiertas, lubricantes y service en Córdoba.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO + MENÚ HAMBURGUESA + MODO OSCURO -->
+  <header class="encabezado">
+    <a href="#inicio" class="logo">🚲 El Alemán</a>
+    <button id="btn-menu" class="btn-menu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav id="menu" class="menu">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#calculadora">Presupuesto</a>
+      <a href="#galeria">Galería</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#faq">FAQ</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto">Contacto</a>
+      <button id="btn-tema" class="btn-tema" aria-label="Cambiar modo claro/oscuro">🌙</button>
+      <a href="#carrito" class="btn-carrito-menu">🛒 <span id="contador-menu">0</span></a>
+    </nav>
+  </header>
+
+  <!-- INICIO -->
+  <section id="inicio" class="hero">
+    <div class="hero-texto">
+      <p id="saludo" class="saludo"></p>
+      <h1>Bicicletería <span>El Alemán</span></h1>
+      <p class="hero-sub">Bicis stunt, BMX, componentes, cubiertas, lubricantes y service. Todo para que le des duro al asfalto, a la rampa y al skatepark.</p>
+      <div class="hero-botones">
+        <a href="#catalogo" class="btn">Ver catálogo</a>
+        <a href="#contacto" class="btn btn-borde">Consultanos</a>
+      </div>
+    </div>
+    <div class="promo">
+      <h2>🔥 Promo Semana Stunt</h2>
+      <p>10% OFF en componentes y lubricantes. Termina en:</p>
+      <div id="cuenta" class="cuenta" aria-live="polite">
+        <div><b id="cd-dias">00</b><small>días</small></div>
+        <div><b id="cd-horas">00</b><small>horas</small></div>
+        <div><b id="cd-min">00</b><small>min</small></div>
+        <div><b id="cd-seg">00</b><small>seg</small></div>
+      </div>
+      <p id="cd-fin" class="oculto">¡La promo terminó! Seguí atento a la próxima.</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- CATÁLOGO -->
+    <section id="catalogo" class="seccion">
+      <h2>Catálogo</h2>
+      <p class="nota">Precios en pesos argentinos, referenciales. Consultá stock y precio final por WhatsApp.</p>
+      <div class="herramientas">
+        <input type="search" id="buscador" placeholder="🔍 Buscar producto (ej: cadena, pedales...)" aria-label="Buscar producto">
+        <div class="filtros" id="filtros">
+          <button class="btn-filtro activo" data-cat="todos">Todos</button>
+          <button class="btn-filtro" data-cat="bicicletas">Bicicletas</button>
+          <button class="btn-filtro" data-cat="componentes">Componentes</button>
+          <button class="btn-filtro" data-cat="cubiertas">Cubiertas</button>
+          <button class="btn-filtro" data-cat="lubricantes">Lubricantes</button>
+          <button class="btn-filtro" data-cat="indumentaria">Indumentaria</button>
+        </div>
+      </div>
+      <div id="grilla-productos" class="grilla"></div>
+      <p id="sin-resultados" class="nota oculto">No encontramos productos con esa búsqueda 😕</p>
+    </section>
+
+    <!-- CARRITO -->
+    <section id="carrito" class="seccion seccion-alt">
+      <h2>🛒 Tu pedido</h2>
+      <div class="carrito-caja">
+        <ul id="lista-carrito" class="lista-carrito"></ul>
+        <p id="carrito-vacio" class="nota">Todavía no agregaste nada. ¡Elegí algo del catálogo!</p>
+        <div class="carrito-total">
+          <span>Ítems: <b id="contador-items">0</b></span>
+          <span>Total: <b id="total-carrito">$0</b></span>
+        </div>
+        <div class="carrito-acciones">
+          <button id="btn-vaciar" class="btn btn-borde">Vaciar</button>
+          <button id="btn-whatsapp" class="btn btn-wsp">📲 Pedir por WhatsApp</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA -->
+    <section id="calculadora" class="seccion">
+      <h2>Calculadora de presupuesto</h2>
+      <p class="nota">Descuento por cantidad: 3 o más → 5% · 5 o más → 10% · 10 o más → 15%.</p>
+      <div class="calc-caja">
+        <label for="calc-producto">Producto</label>
+        <select id="calc-producto"></select>
+        <label for="calc-cantidad">Cantidad</label>
+        <input type="number" id="calc-cantidad" min="1" value="1">
+        <button id="btn-calcular" class="btn">Calcular</button>
+        <div id="calc-resultado" class="calc-resultado" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="seccion seccion-alt">
+      <h2>Galería</h2>
+      <p class="nota">Tocá una miniatura para agrandarla.</p>
+      <div id="galeria-grande" class="galeria-grande"></div>
+      <div id="miniaturas" class="miniaturas"></div>
+    </section>
+
+    <!-- OPINIONES (CARRUSEL) -->
+    <section id="opiniones" class="seccion">
+      <h2>Lo que dicen los riders</h2>
+      <div class="carrusel">
+        <button id="car-prev" class="car-btn" aria-label="Anterior">‹</button>
+        <blockquote id="car-texto" class="car-texto"></blockquote>
+        <button id="car-next" class="car-btn" aria-label="Siguiente">›</button>
+      </div>
+      <div id="car-puntos" class="car-puntos"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="seccion seccion-alt">
+      <h2>Preguntas frecuentes</h2>
+      <div id="lista-faq" class="faq"></div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="seccion">
+      <h2>📍 Dónde estamos</h2>
+      <div class="ubi-grid">
+        <div class="ubi-info">
+          <p><b>Dirección:</b> Av. Ejemplo 1234, Córdoba Capital</p>
+          <p><b>Horarios:</b> Lunes a Viernes 9:00 a 13:00 y 16:00 a 20:00 · Sábados 9:00 a 13:30</p>
+          <p><b>Teléfono / WhatsApp:</b> +54 9 351 000-0000</p>
+          <p><b>Instagram:</b> @bicicleteria.elaleman</p>
+          <p><b>Servicios:</b> service completo, armado de bicis a medida, cambio de rodamientos, centrado de ruedas.</p>
+        </div>
+        <iframe class="mapa" title="Mapa de ubicación" loading="lazy"
+          src="https://www.google.com/maps?q=C%C3%B3rdoba,+Argentina&output=embed"></iframe>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="seccion seccion-alt">
+      <h2>Contacto</h2>
+      <form id="form-contacto" class="form" novalidate>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" placeholder="Tu nombre">
+        <small class="error" id="error-nombre"></small>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="tu@email.com">
+        <small class="error" id="error-email"></small>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" rows="4" placeholder="Contanos qué necesitás"></textarea>
+        <small class="error" id="error-mensaje"></small>
+
+        <button type="submit" class="btn">Enviar</button>
+        <p id="form-ok" class="ok oculto">✅ ¡Gracias! Recibimos tu mensaje y te respondemos pronto.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="anio"></span> Bicicletería El Alemán · Córdoba, Argentina</p>
+    <p class="nota">Rodá seguro: usá casco y protecciones 🪖</p>
+  </footer>
+
+  <button id="btn-subir" class="btn-subir oculto" aria-label="Volver arriba">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
